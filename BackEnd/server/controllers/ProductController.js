@@ -37,3 +37,26 @@ module.exports.oneProduct = (req, res)=>{
   });
 
 }
+
+module.exports.updateProduct = (req, res)=>{
+  const { id } = req.params;
+  const { title, price, description } = req.body;
+  return Product.findByIdAndUpdate(id, { title, price, description },  {new:true})  
+  .then((product)=>{
+    return res.status(200).json(product);
+  })
+  .catch((error)=>{
+    return res.status(500).json({ message: "Algo salio mal: " + error });
+  });
+}
+
+module.exports.deleteProduct = (req, res)=>{
+  const { id } = req.params;
+  return Product.findByIdAndDelete(id)
+  .then((product)=>{
+    return res.status(200).json(product);
+  })
+  .catch((error)=>{
+    return res.status(500).json({ message: "Algo salio mal: " + error });
+  });
+}

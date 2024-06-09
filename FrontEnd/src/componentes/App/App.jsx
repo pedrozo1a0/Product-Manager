@@ -5,6 +5,7 @@ import axios from "axios";
 import { Routes, Route, useLocation } from "react-router-dom";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import FormProduct from "../FormProduct/FormProduct";
+import UpdateProduct from "../UpdateProduct/UpdateProduct";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -21,17 +22,16 @@ const App = () => {
         console.log(error);
       });
 
-    /*
-    startsWith("/products/") es un método de cadena que devuelve true si la cadena comienza con la subcadena especificada, 
-    en este caso, "/products/". Entonces, enLaRutaDetalle será true si la ruta actual comienza con "/products/", 
-    lo que significa que estamos en la página de detalles de un producto.
-    */
-    const enLaRutaDetalle = rutaActual.pathname.startsWith("/products/");
+    const enLaRutaDetalle = rutaActual.pathname.startsWith("/products/") || rutaActual.pathname.startsWith("/products/:id/edit");
     setMostrarForm(!enLaRutaDetalle);
-  }, [rutaActual.pathname]); // Ejecutar efecto cuando cambie la ubicación
+  }, [rutaActual.pathname]);
 
   const addProduct = (newProduct) => {
     setProducts([...products, newProduct]);
+  };
+
+  const removeFromList = (productId) => {
+    setProducts(products.filter(product => product._id !== productId));
   };
 
   return (
@@ -41,12 +41,13 @@ const App = () => {
           <FormProduct addProduct={addProduct} />
           <hr />
           <Routes>
-            <Route path="/" element={<ProductList products={products} />} />
+            <Route path="/" element={<ProductList products={products} removeFromList={removeFromList} />} />
           </Routes>
         </>
       ) : (
         <Routes>
-          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/products/:id" element={<ProductDetail removeFromList={removeFromList} />} />
+          <Route path="/products/:id/edit" element={<UpdateProduct />} />
         </Routes>
       )}
     </div>

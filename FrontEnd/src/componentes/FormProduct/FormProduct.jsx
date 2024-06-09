@@ -19,7 +19,8 @@ const FormProduct = ({addProduct}) =>{
         })
         .then((response) => {
             console.log(response);
-            addProduct(response.data)
+            addProduct(response.data);
+            window.location.reload();
         })
         .catch((error) => {
             console.log(error);

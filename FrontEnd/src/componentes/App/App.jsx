@@ -37,12 +37,15 @@ const App = () => {
   return (
     <div className="App">
       {mostrarForm ? (
-        <>
+        < >
+          <div className="containerForm">
           <FormProduct addProduct={addProduct} />
+          </div>
           <hr />
-          <Routes>
-            <Route path="/" element={<ProductList products={products} removeFromList={removeFromList} />} />
-          </Routes>
+            <Routes>
+              <Route path="/" element={<ProductList products={products} removeFromList={removeFromList} />} />
+            </Routes>
+    
         </>
       ) : (
         <Routes>

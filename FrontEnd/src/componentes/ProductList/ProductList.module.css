@@ -1,4 +1,71 @@
-.ProductList{
-    display: flex;
-    justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap');
+
+.ContainerProductList {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  font-family: "Cactus Classical Serif", serif;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.ProductList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px; 
+  margin-bottom: 15px; 
+  border: 1px solid #ddd;
+  border-radius: 8px; 
+  background-color: #fff;
+  width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  transition: box-shadow 0.3s ease; 
+}
+
+.ProductList:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.ProductList h5 {
+  margin: 0 0 10px 0; 
+  font-size: 1.2em; 
+  color: #333; 
+}
+
+.ProductList a {
+  margin-bottom: 15px; 
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1em; 
+  transition: color 0.3s ease; 
+}
+
+.ProductList a:hover {
+  color: #0056b3; 
+  text-decoration: underline; 
+}
+
+.ProductList button {
+  padding: 8px 16px; 
+  border: none;
+  border-radius: 5px;
+  background-color: #dc3545;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.ProductList button:hover {
+  background-color: #fa0019; 
+  transform: scale(1.05); 
+}
+
+.ProductList button:active {
+  background-color: #bd2130; 
+  transform: scale(1); /* Restaurar tamaño al hacer clic */
 }

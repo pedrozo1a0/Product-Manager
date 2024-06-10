@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "../Product/Product";
+import styles from "./ProductDetail.module.css";
 
 const ProductDetail = ({ removeFromList }) => {
   const { id } = useParams();
@@ -34,12 +35,12 @@ const ProductDetail = ({ removeFromList }) => {
   return (
     <>
       {detalleProduct ? (
-        <div>
+        <div className={styles.ContainerProductDetail}>
           <Product product={detalleProduct} />
-          <Link to={`/products/${detalleProduct._id}/edit`}>
-            Edit
-          </Link>
-          <button onClick={deleteProduct}>Delete</button>
+          <div className={styles.actions}>
+            <Link to={`/products/${detalleProduct._id}/edit`}>Edit</Link>
+            <button onClick={deleteProduct}>Delete</button>
+          </div>
         </div>
       ) : (
         <p>Loading...</p>

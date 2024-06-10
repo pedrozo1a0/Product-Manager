@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import styles from "./UpdateProduct.module.css"; // Importar los estilos
+
 const UpdateProduct = () => {
   const { id } = useParams();
   const [title, setTitle] = useState("");
@@ -47,7 +49,7 @@ const UpdateProduct = () => {
   };
 
   return (
-    <>
+    <div className={styles.ContainerUpdateProduct}>
       <h1>Actualizar producto</h1>
       <form onSubmit={actualizarProducto}>
         <div>
@@ -82,7 +84,7 @@ const UpdateProduct = () => {
         </div>
         <button>Actualizar</button>
       </form>
-    </>
+    </div>
   );
 };
 

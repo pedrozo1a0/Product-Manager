@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
+import style from "./FormProduct.module.css";
 const FormProduct = ({addProduct}) =>{
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
@@ -31,10 +32,10 @@ const FormProduct = ({addProduct}) =>{
     return(
         <>
             
-            <form onSubmit={enviarAFormulario}>
+            <form className={style.form} onSubmit={enviarAFormulario}>
                 <p>
                     <label htmlFor="title"> Title</label> <br/>
-                    <input id="title"
+                    <input className={style.input} id="title"
                         type="text"
                         name="title"
                         value={title}
@@ -43,7 +44,7 @@ const FormProduct = ({addProduct}) =>{
                 </p>
                 <p>
                     <label htmlFor="price"> Price</label> <br/>
-                    <input id="price"
+                    <input className={style.input} id="price"
                         type="number"
                         name="price"
                         value={price}
@@ -52,14 +53,16 @@ const FormProduct = ({addProduct}) =>{
                 </p>
                 <p>
                     <label htmlFor="description"> Description</label> <br/>
-                    <input id="description"
+                    <input className={style.input} id="description"
                         type="text"
                         name="description"
                         value={description}
                         onChange={(e)=> setDescription(e.target.value)}
                     />
                 </p>
-                <button>Enviar</button>
+                <div className={style.Divbutton}>
+                    <button className={style.button}>Enviar</button>
+                </div>
             </form>
         </>
     )

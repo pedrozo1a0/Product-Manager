@@ -1,3 +1,7 @@
 .App{
     text-align: center;
 }
+.containerForm{
+    display: flex;
+    justify-content: center;
+}

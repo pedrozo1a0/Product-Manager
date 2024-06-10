@@ -16,7 +16,7 @@ const ProductList = ({ products, removeFromList }) => {
   };
 
   return (
-    <div>
+    <div className={style.ContainerProductList}>
       <h2>All Products</h2>
       {products.map((product, index) => (
         <div className={style.ProductList} key={index}>

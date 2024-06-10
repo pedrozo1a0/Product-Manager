@@ -1,0 +1,56 @@
+/* UpdateProduct.module.css */
+.ContainerUpdateProduct {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fefefe;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .ContainerUpdateProduct h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .ContainerUpdateProduct form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ContainerUpdateProduct label {
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .ContainerUpdateProduct input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .ContainerUpdateProduct input:focus {
+    border-color: #007bff;
+  }
+  
+  .ContainerUpdateProduct button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ContainerUpdateProduct button:hover {
+    background-color: #0056b3;
+  }
+  

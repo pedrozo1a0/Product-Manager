@@ -1,4 +1,4 @@
-/* UpdateProduct.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap');
 .ContainerUpdateProduct {
     max-width: 600px;
     margin: 50px auto;
@@ -7,7 +7,8 @@
     border-radius: 10px;
     background-color: #fefefe;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
+    font-family: "Cactus Classical Serif", serif;
+    font-weight: 400;
   }
   
   .ContainerUpdateProduct h1 {

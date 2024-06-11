@@ -31,8 +31,18 @@ const App = () => {
   };
 
   const removeFromList = (productId) => {
-    setProducts(products.filter(product => product._id !== productId));
+    const indiceProduct = products.findIndex((product) => product._id === productId);
+    const productActualizado = [...products];
+    productActualizado.splice(indiceProduct, 1);
+    setProducts([...products, productActualizado]);
   };
+
+  const updateProduct = (productId) => {
+    const indiceProduct = products.findIndex((product) => product._id === productId);
+    const productActualizado = [...products];
+    productActualizado[indiceProduct] = { ...productActualizado[indiceProduct], ...productId };
+    setProducts([...products, productActualizado]);
+  }
 
   return (
     <div className="App">
@@ -50,7 +60,7 @@ const App = () => {
       ) : (
         <Routes>
           <Route path="/products/:id" element={<ProductDetail removeFromList={removeFromList} />} />
-          <Route path="/products/:id/edit" element={<UpdateProduct />} />
+          <Route path="/products/:id/edit" element={<UpdateProduct products={products} updateProduct={updateProduct} />} />
         </Routes>
       )}
     </div>

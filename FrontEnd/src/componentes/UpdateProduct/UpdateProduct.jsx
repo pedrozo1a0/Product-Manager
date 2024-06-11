@@ -1,27 +1,18 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./UpdateProduct.module.css"; // Importar los estilos
 
-const UpdateProduct = () => {
+const UpdateProduct = ({updateProduct, products}) => {
   const { id } = useParams();
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
+  const productAEditar = products.find((product) => product._id === id);
+  
+  const [title, setTitle] = useState(productAEditar.title);
+  const [price, setPrice] = useState(productAEditar.price);
+  const [description, setDescription] = useState(productAEditar.description);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/productsupdate/${id}`)
-      .then((response) => {
-        setTitle(response.data.title);
-        setPrice(response.data.price);
-        setDescription(response.data.description);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+  
 
   const actualizarProducto = (e) => {
     e.preventDefault();
@@ -37,10 +28,15 @@ const UpdateProduct = () => {
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify({title,price,description, id})
         }
       )
       .then((response) => {
         console.log(response);
+        updateProduct(response.data);
+        setTitle("");
+        setPrice(0);
+        setDescription("");
         navigate('/');
       })
       .catch((error) => {

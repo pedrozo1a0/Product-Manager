@@ -1,3 +1,4 @@
+
 import "./App.css";
 import ProductList from "../ProductList/ProductList";
 import React, { useState, useEffect } from "react";
@@ -27,29 +28,36 @@ const App = () => {
   }, [rutaActual.pathname]);
 
   const addProduct = (newProduct) => {
-    setProducts([...products, newProduct]);
+    axios.post('http://localhost:8080/api/newProduct', newProduct,{
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+  .then((response) => {
+     setProducts([...products, response.data]);
+  })
+  .catch((error) => {
+      console.log(error);
+  });
   };
 
   const removeFromList = (productId) => {
     const indiceProduct = products.findIndex((product) => product._id === productId);
     const productActualizado = [...products];
     productActualizado.splice(indiceProduct, 1);
-    setProducts([...products, productActualizado]);
+    setProducts(productActualizado);
   };
 
-  const updateProduct = (productId) => {
-    const indiceProduct = products.findIndex((product) => product._id === productId);
-    const productActualizado = [...products];
-    productActualizado[indiceProduct] = { ...productActualizado[indiceProduct], ...productId };
-    setProducts([...products, productActualizado]);
-  }
-
+  
   return (
     <div className="App">
       {mostrarForm ? (
         < >
           <div className="containerForm">
-          <FormProduct addProduct={addProduct} />
+          <FormProduct onSubmitProp={addProduct}
+                      initialTitle=""
+                      initialPrice= ""
+                      initialDescription=""/>
           </div>
           <hr />
             <Routes>
@@ -60,7 +68,7 @@ const App = () => {
       ) : (
         <Routes>
           <Route path="/products/:id" element={<ProductDetail removeFromList={removeFromList} />} />
-          <Route path="/products/:id/edit" element={<UpdateProduct products={products} updateProduct={updateProduct} />} />
+          <Route path="/products/:id/edit" element={<UpdateProduct products={products} />} />
         </Routes>
       )}
     </div>

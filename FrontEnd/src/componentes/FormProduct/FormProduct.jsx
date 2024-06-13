@@ -1,32 +1,15 @@
+
 import { useState } from "react";
-import axios from 'axios';
 import style from "./FormProduct.module.css";
-const FormProduct = ({addProduct}) =>{
-    const [title, setTitle] = useState("");
-    const [price, setPrice] = useState(0);
-    const [description, setDescription] = useState("");
+const FormProduct = ({onSubmitProp, initialTitle, initialPrice, initialDescription}) =>{
+    const [title, setTitle] = useState(initialTitle);
+    const [price, setPrice] = useState(initialPrice);
+    const [description, setDescription] = useState(initialDescription);
   
     
     const enviarAFormulario = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8080/api/newProduct', {
-            title,
-            price,
-            description
-        },{
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((response) => {
-            console.log(response);
-            addProduct(response.data);
-            window.location.reload();
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-       
+        onSubmitProp({title, price, description});
     };
 
     return(

@@ -1,7 +1,7 @@
 
 import { useState } from "react";
-import style from "./FormProduct.module.css";
-const FormProduct = ({onSubmitProp, initialTitle, initialPrice, initialDescription}) =>{
+import style from "./FormCosa.module.css";
+const FormCosa = ({onSubmitProp, initialTitle, initialPrice, initialDescription}) =>{
     const [title, setTitle] = useState(initialTitle);
     const [price, setPrice] = useState(initialPrice);
     const [description, setDescription] = useState(initialDescription);
@@ -51,4 +51,4 @@ const FormProduct = ({onSubmitProp, initialTitle, initialPrice, initialDescripti
     )
 }
 
-export default FormProduct;
+export default FormCosa;

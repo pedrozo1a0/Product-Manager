@@ -1,17 +1,17 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Product from "../Product/Product";
-import styles from "./ProductDetail.module.css";
+import Cosa from "../Cosa/Cosa";
+import styles from "./CosaDetail.module.css";
 
-const ProductDetail = ({ removeFromList }) => {
+const CosaDetail = ({ removeFromList }) => {
   const { id } = useParams();
-  const [detalleProduct, setDetalleProduct] = useState(null);
+  const [detalleCosa, setDetalleCosa] = useState(null);
   const navigate = useNavigate();
 
-  const deleteProduct = () => {
+  const deleteCosa = () => {
     axios
-      .delete(`http://localhost:8080/api/productsdelete/${id}`)
+      .delete(`http://localhost:8080/api/Cosasdelete/${id}`)
       .then(() => {
         removeFromList(id);
         navigate('/'); // Redirigir a la página principal después de la eliminación
@@ -23,9 +23,9 @@ const ProductDetail = ({ removeFromList }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/products/${id}`)
+      .get(`http://localhost:8080/api/Cosas/${id}`)
       .then((response) => {
-        setDetalleProduct(response.data);
+        setDetalleCosa(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -34,12 +34,12 @@ const ProductDetail = ({ removeFromList }) => {
 
   return (
     <>
-      {detalleProduct ? (
-        <div className={styles.ContainerProductDetail}>
-          <Product product={detalleProduct} />
+      {detalleCosa ? (
+        <div className={styles.ContainerCosaDetail}>
+          <Cosa Cosa={detalleCosa} />
           <div className={styles.actions}>
-            <Link to={`/products/${detalleProduct._id}/edit`}>Edit</Link>
-            <button onClick={deleteProduct}>Delete</button>
+            <Link to={`/Cosas/${detalleCosa._id}/edit`}>Edit</Link>
+            <button onClick={deleteCosa}>Delete</button>
           </div>
         </div>
       ) : (
@@ -49,4 +49,4 @@ const ProductDetail = ({ removeFromList }) => {
   );
 };
 
-export default ProductDetail;
+export default CosaDetail;

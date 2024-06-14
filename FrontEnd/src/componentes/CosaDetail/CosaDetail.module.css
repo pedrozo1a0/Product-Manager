@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap');
-.ContainerProductDetail {
+.ContainerCosaDetail {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
@@ -11,13 +11,13 @@
     font-weight: 400;
   }
   
-  .ContainerProductDetail .actions {
+  .ContainerCosaDetail .actions {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
   }
   
-  .ContainerProductDetail a {
+  .ContainerCosaDetail a {
     padding: 10px 20px;
     border-radius: 5px;
     background-color: #007bff;
@@ -26,11 +26,11 @@
     transition: background-color 0.3s ease;
   }
   
-  .ContainerProductDetail a:hover {
+  .ContainerCosaDetail a:hover {
     background-color: #0056b3;
   }
   
-  .ContainerProductDetail button {
+  .ContainerCosaDetail button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -40,7 +40,7 @@
     transition: background-color 0.3s ease;
   }
   
-  .ContainerProductDetail button:hover {
+  .ContainerCosaDetail button:hover {
     background-color: #c82333;
   }
   

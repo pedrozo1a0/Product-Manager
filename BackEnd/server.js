@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const RoutesProduct = require('./server/routes/RoutesProduct')
+const RoutesCosa = require('./server/routes/RoutesCosa')
 const app = express();
 
 //requerimos la base de datos
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //le pasamos la app a nuestra ruta
-RoutesProduct(app);
+RoutesCosa(app);
 
 
 

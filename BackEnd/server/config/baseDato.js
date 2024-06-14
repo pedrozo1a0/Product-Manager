@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/productmanager_db')
+mongoose.connect('mongodb://127.0.0.1:27017/Cosamanager_db')
 .then(()=>{
     console.log("Conexión exítosa a la base de datos");
 })

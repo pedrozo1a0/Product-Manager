@@ -1,15 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap');
+
 
 .form {
-    background-color: rgba(208, 231, 1, 0.35);
+    background-color: rgba(241, 241, 236, 0.35);
     width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: "Cactus Classical Serif", serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     padding: 20px;
-    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -19,9 +18,8 @@
 
 .button {
     padding: 10px 60px;
-    background-color: rgba(204, 216, 158, 0.778);
+    background-color: rgba(42, 93, 194, 0.778);
     color: black;
-    border-radius: 40px;
     transition: background-color 0.4s, box-shadow 0.4s, color 0.4s;
     cursor: pointer;
     border: none;
@@ -35,17 +33,14 @@
 }
 
 .input {
-    border-radius: 40px;
     padding: 10px;
     border: 1px solid #ccc;
-    transition: background-color 0.4s, box-shadow 0.4s;
     font-size: 16px;
     margin-bottom: 10px;
 }
 
 .input:hover {
     background-color: transparent;
-    box-shadow: 3px 3px 5px black;
 }
 
 .input:focus {

@@ -2,6 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const RoutesCosa = require('./server/routes/RoutesCosa')
 const app = express();
+const socketIo= require('socket.io')
+const server= require('http').createServer(app)
+const io= socketIo(server, { cors: { origin: '*' } })
 
 //requerimos la base de datos
 require('./server/config/baseDato');
@@ -17,6 +20,15 @@ RoutesCosa(app);
 
 
 
-app.listen(8080, () => {
+
+
+server.listen(8080, () => {
   console.log("Activo en el puerto 8080");
 });
+
+
+io.on('connection', (socket)=> {
+  console.log("Se conecto un usuario", socket)
+  socket.broadcast.emit("Anuncio", "Llegó alguien mas")
+});
+

@@ -7,13 +7,18 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import CosaDetail from "../CosaDetail/CosaDetail";
 import FormCosa from "../FormCosa/FormCosa";
 import UpdateCosa from "../UpdateCosa/UpdateCosa";
+import io from 'socket.io-client';
 
 const App = () => {
   const [Cosas, setCosas] = useState([]);
   const [mostrarForm, setMostrarForm] = useState(true);
   const rutaActual = useLocation();
+  const socket= io('http://localhost:8080')
 
+  
   useEffect(() => {
+    socket.emit('connection')
+    socket.on('Anuncio', (mensaje)=>{alert(mensaje)})
     axios
       .get("http://localhost:8080/api/Cosas")
       .then((response) => {
@@ -26,8 +31,11 @@ const App = () => {
     const enLaRutaDetalle = rutaActual.pathname.startsWith("/Cosas/") || rutaActual.pathname.startsWith("/Cosas/:id/edit");
     setMostrarForm(!enLaRutaDetalle);
   }, [rutaActual.pathname]);
+  
+  
 
   const addCosa = (newCosa) => {
+    
     axios.post('http://localhost:8080/api/newCosa', newCosa,{
       headers: {
           'Content-Type': 'application/json'
